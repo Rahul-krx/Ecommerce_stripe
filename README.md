@@ -14,7 +14,7 @@ An Ecommerce website built using HTML, CSS, JavaScript, Node.js, Express.js, and
 
 . 🖥 Node.js + Express.js Backend
 
- 🛠️ Tech Stack
+ 🛠️ Tech Stack:
  
 . Frontend: HTML, CSS, JavaScript
 
