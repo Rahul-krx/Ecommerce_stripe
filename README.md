@@ -5,9 +5,13 @@ An Ecommerce website built using HTML, CSS, JavaScript, Node.js, Express.js, and
 🚀 Features:
 
 . 🛍 Add to Cart & Checkout
+
 . 💳 Stripe Payment Integration (Secure payments)
+
 . 🎨 Responsive Design
+
 . ⚡ Fast & Lightweight
+
 . 🖥 Node.js + Express.js Backend
 
  🛠️ Tech Stack
