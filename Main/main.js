@@ -1,5 +1,6 @@
 // Products Array
 // header scroll...
+//  'npm start' to start
 let header = document.querySelector('header');
 window.addEventListener('scroll',()=>{
     header.classList.toggle('.shadow', window.scrollY > 0)
@@ -49,7 +50,7 @@ const products = [
     },
     {
         id: 7,
-        title: "CLASSIC CREWNECK",
+        title: "CLASSIC CREWN",
         price: 48.99,
         image:
             "https://img01.ztat.net/article/spp-media-p1/10cea44041564f81ac585fc6c8978907/c4c32dbc45dd4dbc9d15087c846538f2.jpg?imwidth=1800",
@@ -61,8 +62,32 @@ const products = [
         image:
             "https://img01.ztat.net/article/spp-media-p1/d391f90be278469ebfdff731800cfccc/6d2101bd672f4e059501f01fe726f315.jpg?imwidth=1800",
     },
+    {
+        id: 9,
+        title: "College Bag",
+        price: 34.34 ,
+        image: "https://file.aiquickdraw.com/m/1738585120_77522eabeee445b99cea97fa5267a3fc.png"
+    },
+    {
+        id: 10,
+        title: "Smartwatch",
+        price: 78.54 ,
+        image: "https://file.aiquickdraw.com/m/1738585349_eb9a4fe731ff429784124dc13ddb0ba6.png"
+    },
+    {
+        id: 11,
+        title: "Smart Ring",
+        price: 92.88 ,
+        image: "https://file.aiquickdraw.com/m/1738585434_df639f26eec24409b27aafbf3c85f090.png"
+    },
+    {
+        id: 12,
+        title: "silver-plated locket",
+        price: 92.88 ,
+        image: "https://file.aiquickdraw.com/m/1738585735_55b23c395ee944dc989ae0d9b313a598.png"
+    },
+    
 ];
-
 
 // get the product list and elements.
 const productList = document.getElementById("productList")
@@ -145,7 +170,6 @@ function removeFromCart(event) {
     // saveToLocalStorage();
     calculateCartTotal();
     updateCartIcon();
-
 }
 // Quantity change...
 function changeQuantity(event) {
@@ -163,7 +187,6 @@ function changeQuantity(event) {
         }
     }
 }
-
 
 // Save to local storage.....
 
@@ -232,8 +255,7 @@ function clearCart(){
     cart = [];
     localStorage.removeItem('cart');
     updateCartIcon();
-
-    
+   
 }
 
 // Cart icon quantity.....
@@ -257,11 +279,6 @@ function updateCartIcon() {
     cartIcon.setAttribute('data-quantity', totalQuantity)
 
 }
-
-
-
-
-
 
 renderProducts();
 renderCartItems();

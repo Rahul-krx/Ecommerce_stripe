@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from "dotenv";
 import Stripe from 'stripe';
+const PORT = process.env.PORT || 3000;
 
 // load variables.....
 
@@ -61,10 +62,9 @@ app.post("/stripe-checkout", async(req, res)=>{
     res.json({url: session.url});
 });
 
+ // Use the Render-assigned port or default to 3000 for local development
 
-
-
-app.listen(3000, () =>{
-    console.log("Server is running on port 3000");
-})
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
 

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Signup Popup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .popup.active {
+            display: block;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        .popup h2 {
+            margin-top: 0;
+        }
+
+        .popup form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .popup form input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .popup form button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .popup form button:hover {
+            background-color: #0056b3;
+        }
+
+        .checkout-btn {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .checkout-btn:hover {
+            background-color: #218838;
+        }
+
+        .switch {
+            cursor: pointer;
+            color: #007bff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <button class="checkout-btn">Checkout</button>
+
+    <div class="overlay"></div>
+
+    <div class="popup" id="authPopup">
+        <h2 id="formTitle">Login</h2>
+        <form id="authForm">
+            <input type="email" id="email" placeholder="Email" required />
+            <input type="password" id="password" placeholder="Password" required />
+            <button type="submit" id="submitButton">Login</button>
+        </form>
+        <p id="switchText">Don't have an account? <span class="switch" id="switchForm">Sign up</span></p>
+    </div>
+
+    <script>
+        const checkoutBtn = document.querySelector('.checkout-btn');
+        const popup = document.querySelector('#authPopup');
+        const overlay = document.querySelector('.overlay');
+        const formTitle = document.querySelector('#formTitle');
+        const authForm = document.querySelector('#authForm');
+        const switchText = document.querySelector('#switchText');
+        const switchForm = document.querySelector('#switchForm');
+        const emailInput = document.querySelector('#email');
+        const passwordInput = document.querySelector('#password');
+        const submitButton = document.querySelector('#submitButton');
+
+        let isLoginForm = true;
+
+        // Show popup
+        checkoutBtn.addEventListener('click', () => {
+            if (localStorage.getItem('user')) {
+                alert('You are already logged in. Proceeding to checkout...');
+            } else {
+                popup.classList.add('active');
+                overlay.classList.add('active');
+            }
+        });
+
+        // Switch between Login and Signup
+        switchForm.addEventListener('click', () => {
+            isLoginForm = !isLoginForm;
+            formTitle.textContent = isLoginForm ? 'Login' : 'Sign up';
+            submitButton.textContent = isLoginForm ? 'Login' : 'Sign up';
+            switchText.innerHTML = isLoginForm
+                ? "Don't have an account? <span class='switch' id='switchForm'>Sign up</span>"
+                : "Already have an account? <span class='switch' id='switchForm'>Login</span>";
+        });
+
+        // Handle form submission
+        authForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = emailInput.value;
+            const password = passwordInput.value;
+
+            if (isLoginForm) {
+                // Login
+                const user = JSON.parse(localStorage.getItem('user'));
+                if (user && user.email === email && user.password === password) {
+                    alert('Login successful! Proceeding to checkout...');
+                    popup.classList.remove('active');
+                    overlay.classList.remove('active');
+                } else {
+                    alert('Invalid credentials. Please try again.');
+                }
+            } else {
+                // Signup
+                const user = { email, password };
+                localStorage.setItem('user', JSON.stringify(user));
+                alert('Signup successful! You can now login.');
+                isLoginForm = true;
+                formTitle.textContent = 'Login';
+                submitButton.textContent = 'Login';
+                switchText.innerHTML = "Don't have an account? <span class='switch' id='switchForm'>Sign up</span>";
+            }
+        });
+
+        // Close popup when clicking outside
+        overlay.addEventListener('click', () => {
+            popup.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

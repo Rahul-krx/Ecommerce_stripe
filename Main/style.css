@@ -72,19 +72,33 @@ header.shadow{
     font-weight: 700;
 
 }
-
 .navbar {
 
     display: flex;
     align-items: center;
-    column-gap: 1rem;
-
+    column-gap: 2rem;
+}
+.navbar a:hover{
+    transform: scale(1.1);
 }
 
 .nav-link {
     font: size 1.025rem;
     color: var(--main-color);
     font-weight: 700;
+}
+ .user .bx-user-circle{
+    font-size: 1.8rem;
+    color: var(--main-color);
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: -150px;
+}
+.bx-user-circle:hover{
+ scale: 1.1;
 }
 
 #cart-icon {
@@ -132,13 +146,43 @@ header.shadow{
     justify-content: center;
 
 }
-.home-img img{
-    max-width: 700px;
+.coupon{
+    display: flex;
+    align-items: center;
+    background: rgba(139, 37, 37, 0.723);
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    
+}
+.coupon a{
+    /* background: var(--main-color); */
+    color: var(--bg-color);
+    border: 1px solid silver;
+    padding: 8px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-left: 8px;
+}
+.coupon a:hover{
+    background: #000;
+}
+.banner{
+    margin-top: 6px;
+    cursor: pointer;
     width: 100%;
+    
+}
+.home-img img{
+    /* max-width: 700px; */
+    width: 133%;
+    margin-top: -30px;
+    position: relative;
+    top: -190px;
 
 }
 .home-img::before{
-    content: 'Coloring Style';
+    /* content: 'Coloring Style'; */
     font-size: 6rem;
     font-weight: 800;
     text-transform: uppercase;
@@ -178,6 +222,9 @@ header.shadow{
     color: var(--main-color);
 
 }
+.product-img{
+    background:#f2f2f2;
+}
 .add-to-cart{
     background: var(--main-color);
     color:var(--bg-color) ;
@@ -206,6 +253,9 @@ header.shadow{
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-color);
+}
+.back:hover{
+    transform: scale(1.04);
 }
 .cart-s-title{
     font-size: 1.5rem;
@@ -320,6 +370,10 @@ flex-direction: column;
     text-transform: uppercase;
 
 }
+.footer-box a:hover{
+    transform: scale(1.04);
+
+}
 .social{
     display: flex;
     align-items: center;
@@ -400,6 +454,15 @@ flex-direction: column;
 }
 
 @media(max-width:550px){
+    .coupon h4{
+        font-size: 13px;
+    }
+    .coupon{
+        height: 30px;
+    }
+    .coupon a{
+        font-size: 11px;
+    }
     #menu-icon{
         display: initial;
     }
@@ -457,4 +520,15 @@ flex-direction: column;
     .footer-box h2{
         font-size: 3.5rem;
     }
+    .coupon h4{
+        font-size: 10px;
+    }
+    .coupon{
+        height: 24px;
+    }
+    .coupon a{
+        font-size: 10px;
+        padding:6px 12px;
+    }
+    
 }
